@@ -72,7 +72,8 @@
       display: flex; align-items: center; justify-content: center; border: 3px solid var(--bg);
       font-family: var(--mono); font-weight: 700; font-size: 2.6rem; color: var(--accent);
     }
-    .photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .photo .inner { position: relative; }
+    .photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; z-index: 1; }
     .hello { font-family: var(--mono); font-size: .85rem; color: var(--accent); margin-bottom: 1rem; }
     h1 { font-family: var(--mono); font-weight: 700; font-size: clamp(2.2rem, 7vw, 4.2rem); letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 1.3rem; }
     .typed { font-family: var(--mono); font-weight: 700; color: var(--accent-strong); font-size: clamp(.85rem, 2.2vw, 1.05rem); min-height: 1.6em; margin-bottom: 1.8rem; }
@@ -190,9 +191,13 @@
     }
 
     /* ---------- Reise ---------- */
-    .stats { display: flex; flex-wrap: wrap; gap: 1rem; margin: 1.8rem 0; }
-    .stat { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: .9rem 1.2rem; min-width: 140px; }
+    .stats { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin: 1.8rem 0 .6rem; }
+    .stat { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.2rem; }
+    .stat small { display: block; font-family: var(--mono); font-size: .68rem; color: var(--muted); opacity: .8; margin-top: .45rem; line-height: 1.5; }
+    .stats-note { font-family: var(--mono); font-size: .7rem; color: var(--muted); margin-bottom: 1.8rem; }
+    @media (max-width: 460px) { .stats { grid-template-columns: 1fr 1fr; } .stat b { font-size: 1.3rem; } }
     .stat b { font-family: var(--mono); font-size: 1.6rem; color: var(--accent); display: block; line-height: 1.2; }
+    .stat > span { display: block; line-height: 1.4; margin-top: .2rem; }
     .stat span { font-family: var(--mono); font-size: .75rem; color: var(--muted); }
     .map-wrap { display: grid; grid-template-columns: 1.6fr 1fr; gap: 1rem; align-items: stretch; }
     .map { background: #0a0e14; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; position: relative; }
@@ -336,9 +341,16 @@
         </article>
         <article class="card story">
           <p class="tag">&gt; story_02</p>
-          <h3>Angebotskalkulation &amp; CRM – live präsentiert</h3>
-          <p>Ich habe eine Lösung für Angebotskalkulation und CRM konzipiert und beim Kunden vor Ort präsentiert: von der Verkaufschance über die Kalkulation bis zum fertigen Angebot. Kunde und Vertriebsleitung haben die Präsentation sehr gelobt.</p>
-          <ul class="pills"><li>Opportunity-Management</li><li>Kalkulation</li><li>Angebotserstellung</li><li>CRM ↔ ERP</li></ul>
+          <h3>Angebotskalkulation &amp; CRM – eine Demo auf den Punkt</h3>
+          <p>Ich habe eine Lösung für Angebotskalkulation und CRM konzipiert, auf die konkreten Anwendungsfälle des Kunden zugeschnitten, eingereicht und als Demo präsentiert – durchgängig:</p>
+          <ul class="check">
+            <li>Kundenanfragen verwalten</li>
+            <li>Angebot anlegen</li>
+            <li>individuelle Kundenlösungen kalkulieren</li>
+            <li>bis zum fertigen Angebot</li>
+          </ul>
+          <p>Im Ausblick ging es um eine Artikelsuche auf Basis von Katalogdaten, direkt eingebunden in die Kalkulation – und darum, bei einer Bestellung alle Daten vollautomatisch ans ERP zu übergeben, damit alles disponiert und termingerecht bereitgestellt werden kann.</p>
+          <p class="moral">Die Demo war auf den Punkt. Der Kunde hat zum Ausdruck gebracht, dass er sich mit seinen komplexen Anforderungen an die Geschäftsprozesse verstanden fühlt.</p>
         </article>
       </div>
     </div>
@@ -452,11 +464,16 @@
       <p class="label">// unterwegs</p>
       <p class="lead" style="max-width:46rem">Am liebsten reise ich mit dem Wohnmobil. 2025 wurde daraus die große Reise: von Juni bis Dezember durch Italien und einmal quer über den Balkan bis nach Griechenland – und kurz vor Weihnachten zurück nach Stuttgart.</p>
       <div class="stats">
-        <div class="stat"><b>~6</b><span>Monate</span></div>
-        <div class="stat"><b>10</b><span>Länder</span></div>
-        <div class="stat"><b>29</b><span>Stationen</span></div>
+        <div class="stat"><b>~6</b><span>Monate unterwegs</span></div>
+        <div class="stat"><b>10</b><span>Länder bereist</span><small>+ Schweiz, Liechtenstein und Österreich auf der Durchreise</small></div>
+        <div class="stat"><b>≈ 12.000</b><span>Kilometer gefahren</span></div>
+        <div class="stat"><b>723 km</b><span>längste Tagesetappe</span><small>gleich am ersten Tag: Stuttgart → Italien</small></div>
+        <div class="stat"><b>~100</b><span>Übernachtungsplätze</span></div>
+        <div class="stat"><b>30+</b><span>Strände &amp; Buchten</span></div>
+        <div class="stat"><b>6</b><span>Berge</span><small>Vesuv, Velebit, Trebević, Durmitor, Lovćen, Pilion</small></div>
         <div class="stat"><b>~200 l</b><span>Raki gebrannt</span></div>
       </div>
+      <p class="stats-note">// ausgewertet aus der Google-Maps-Timeline, Werte gerundet</p>
 
       <div class="map-wrap">
         <div class="map">
